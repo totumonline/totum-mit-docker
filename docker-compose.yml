@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+
+  totum:
+    container_name: ttm-totum
+    image: ttmonline/totum-mit:2.3.38
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx_fpm_conf/totum_fpm.conf:/etc/php/8.0/fpm/pool.d/totum.conf
+      - ./nginx_fpm_conf/totum_nginx.conf:/etc/nginx/sites-available/default
+
+      - ./cron/totum_cron:/var/www/cron/totum_cron
+
+      - ./totum/fls:/var/www/totum-mit/http/fls
+      - ./totum/totumTmpfiles:/var/www/totum-mit/totumTmpfiles
+      - ./totum/myLogs:/var/www/totum-mit/myLogs
+      - ./totum/backups:/var/www/totum-mit/backups
+
+      - ./certbot/accounts:/etc/letsencrypt/accounts
+      - ./certbot/live:/etc/letsencrypt/live
+    
+    environment:
+      TZ: Europe/Moscow
+
+    depends_on:
+      - postgres
+      - exim
+
+
+  postgres:
+    container_name: ttm-postgres
+    image: postgres:14.1-alpine
+
+    volumes:
+      - ./postgres:/var/lib/postgresql/data/pgdata
+
+    environment:
+      POSTGRES_USER: totum
+      POSTGRES_PASSWORD: TotumBasePass
+      PGDATA: /var/lib/postgresql/data/pgdata
+      TZ: Europe/Moscow
+      PGTZ: Europe/Moscow
+
+  exim:
+    container_name: ttm-smtp
+    image: ttmonline/ttm-smtp:1.0
+    ports:
+        - "25:25"
+    volumes:
+      - ./dkim/config:/etc/exim4/_docker_additional_macros
+      - ./dkim/domain.key:/etc/exim4/domain.key
+      - ./exim_log:/var/log/exim4
+
+    environment:
+      DISABLE_IPV6: true
+      TZ: Europe/Moscow
+  

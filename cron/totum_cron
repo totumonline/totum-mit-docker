@@ -1,0 +1,4 @@
+* * * * *       cd /var/www/totum-mit/ && bin/totum schemas-crons > /proc/1/fd/1 2>/proc/1/fd/2
+*/10 * * * *    cd /var/www/totum-mit/ && bin/totum clean-tmp-dir > /proc/1/fd/1 2>/proc/1/fd/2
+*/10 * * * *    cd /var/www/totum-mit/ && bin/totum clean-schemas-tmp-tables > /proc/1/fd/1 2>/proc/1/fd/2
+22 */12 * * *   sudo /var/www/shell/root-certbot.sh cron > /proc/1/fd/1 2>/proc/1/fd/2
