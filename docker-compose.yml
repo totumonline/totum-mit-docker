@@ -13,6 +13,7 @@ services:
 
       - ./cron/totum_cron:/var/www/cron/totum_cron
 
+      - ./totum/Conf.php:/var/www/totum-mit/Conf.php
       - ./totum/fls:/var/www/totum-mit/http/fls
       - ./totum/totumTmpfiles:/var/www/totum-mit/totumTmpfiles
       - ./totum/myLogs:/var/www/totum-mit/myLogs
@@ -22,7 +23,7 @@ services:
       - ./certbot/live:/etc/letsencrypt/live
     
     environment:
-      TZ: Europe/Moscow
+      TZ: Europe/London
 
     depends_on:
       - postgres
@@ -40,8 +41,8 @@ services:
       POSTGRES_USER: totum
       POSTGRES_PASSWORD: TotumBasePass
       PGDATA: /var/lib/postgresql/data/pgdata
-      TZ: Europe/Moscow
-      PGTZ: Europe/Moscow
+      TZ: Europe/London
+      PGTZ: Europe/London
 
   exim:
     container_name: ttm-smtp
@@ -55,5 +56,5 @@ services:
 
     environment:
       DISABLE_IPV6: true
-      TZ: Europe/Moscow
+      TZ: Europe/London
   
