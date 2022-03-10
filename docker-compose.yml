@@ -20,9 +20,11 @@ services:
       - ./totum/myLogs:/var/www/totum-mit/myLogs
       - ./totum/backups:/var/www/totum-mit/backups
 
-      - ./certbot/accounts:/etc/letsencrypt/accounts
-      - ./certbot/live:/etc/letsencrypt/live
-      - ./certbot/archive:/etc/letsencrypt/archive
+      - ./certbot/etc_letsencrypt:/etc/letsencrypt
+      - ./certbot/log:/var/log/letsencrypt
+      - ./certbot/var_lib:/var/lib/letsencrypt
+
+      
     
     environment:
       TZ: Europe/London
@@ -48,7 +50,7 @@ services:
 
   exim:
     container_name: ttm-smtp
-    image: namshi/smtp:latest
+    image: ttmonline/ttm-smtp:1.0
     ports:
         - "25:25"
     volumes:
