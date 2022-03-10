@@ -24,8 +24,6 @@ services:
       - ./certbot/log:/var/log/letsencrypt
       - ./certbot/var_lib:/var/lib/letsencrypt
 
-      
-    
     environment:
       TZ: Europe/London
 
