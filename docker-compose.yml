@@ -7,9 +7,10 @@ services:
     image: ttmonline/totum-mit:2.3.38
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx_fpm_conf/totum_fpm.conf:/etc/php/8.0/fpm/pool.d/totum.conf
-      - ./nginx_fpm_conf/totum_nginx.conf:/etc/nginx/sites-available/default
+      - ./nginx_fpm_conf/totum_nginx.conf:/etc/nginx/sites-available/totum.online.conf
 
       - ./cron/totum_cron:/var/www/cron/totum_cron
 
@@ -21,6 +22,7 @@ services:
 
       - ./certbot/accounts:/etc/letsencrypt/accounts
       - ./certbot/live:/etc/letsencrypt/live
+      - ./certbot/archive:/etc/letsencrypt/archive
     
     environment:
       TZ: Europe/London
@@ -46,7 +48,7 @@ services:
 
   exim:
     container_name: ttm-smtp
-    image: ttmonline/ttm-smtp:1.0
+    image: namshi/smtp:latest
     ports:
         - "25:25"
     volumes:
