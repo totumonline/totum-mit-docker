@@ -228,39 +228,6 @@ cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DN
 ```
 
 
-
-### Configure server performance (optional)
-
-By default, the `FPM` in the container is set to 2GB RAM.
-
-To change it, you have to stop the containers. Run from the `totum-mit-docker` folder:
-
-```
-docker-compose stop
-```
-
-Open `totum_fpm.conf` in the `nginx_fpm_conf` folder and edit the `pm-parameters`:
-
-```
-nano nginx_fpm_conf/totum_fpm.conf
-```
-
-The same file contains changes to the parameters allocated to `totum`:
-
-—memory limit — `php_admin_value[memory_limit]`
-
-— maximum download size — `php_admin_value[memory_limit]`
-
-> If you change the maximum size of the fiill, you must also change the parameter `client_max_body_size` в файле настроек nginx `nginx_fpm_conf/totum_nginx.conf`
-
-Save and run `docker-compose`:
-
-```
-docker-compose up -d
-```
-
-
-
 ### Connect DKIM (optional)
 
 Go to the `dkim` directory:
@@ -307,7 +274,7 @@ docker-compose up -d
 
 Go to the `DNS` management of your domain and add a `TXT` entry:
 
-**Title** (replace `HOST` with the host from which the emails will be sent)
+Title (replace `HOST` with the host from which the emails will be sent)
 
 ```
 mail._domainkey.HOST.
@@ -320,3 +287,32 @@ v=DKIM1; k=rsa; t=s; p=PUBLIC_KEY
 ```
 
 
+### Configure server performance (optional)
+
+By default, the `FPM` in the container is set to 2GB RAM.
+
+To change it, you have to stop the containers. Run from the `totum-mit-docker` folder:
+
+```
+docker-compose stop
+```
+
+Open `totum_fpm.conf` in the `nginx_fpm_conf` folder and edit the `pm-parameters`:
+
+```
+nano nginx_fpm_conf/totum_fpm.conf
+```
+
+The same file contains changes to the parameters allocated to `totum`:
+
+— memory limit — `php_admin_value[memory_limit]`
+
+— maximum download size — `php_admin_value[upload_max_filesize]`
+
+> If you change the maximum size of the fiill, you must also change the parameter `client_max_body_size` в файле настроек nginx `nginx_fpm_conf/totum_nginx.conf`
+
+Save and run `docker-compose`:
+
+```
+docker-compose up -d
+```

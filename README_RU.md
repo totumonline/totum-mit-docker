@@ -32,8 +32,8 @@ docker-compose up -d
 
 
 
-#### Если у вас установлен Docker и вы хотите сконфигурировать полностью — [посмотрите эту инструкцию]()
+#### Если у вас установлен Docker и вы хотите сконфигурировать полностью — [посмотрите эту инструкцию](https://github.com/totumonline/totum-mit-docker/blob/main/IF_YOU_ALREADY_HAVE_DOCKER_RU.md)
 
 
 
-#### Если вам нужно сконфигурировать чистую систему — [посмотрите эту инструкцию для ubuntu](
+#### Если вам нужно сконфигурировать чистую систему — [посмотрите эту инструкцию для ubuntu](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU_RU.md)

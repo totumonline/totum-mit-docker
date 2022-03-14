@@ -1,3 +1,5 @@
+#### If you want this on RU — [README_RU](https://github.com/totumonline/totum-mit-docker/blob/main/README_RU.md)
+
 ### If you want a quick look
 
 If you have Docker, Docker-compose, and Git installed and want to give it a try, then:
@@ -32,10 +34,10 @@ Open the browser on localhost, select the installation language and fill in the 
 
 
 
-#### If you already have Docker and you want to make a full config — [look at this]()
+#### If you already have Docker and you want to make a full config — [look at this](https://github.com/totumonline/totum-mit-docker/blob/main/IF_YOU_ALREADY_HAVE_DOCKER.md)
 
 
 
-#### If you have a clear system and you want to make a full config — [look at this]()
+#### If you have a clear system and you want to make a full config — [look at this](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
 
 

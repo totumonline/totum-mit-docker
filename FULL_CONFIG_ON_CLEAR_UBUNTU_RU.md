@@ -229,37 +229,6 @@ cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DN
 
 
 
-### Настраиваем производительность сервера (опционально)
-
-Базово `FPM` в контейнере настроен на 2GB оперативной памяти.
-
-Что бы изменить надо остановить контейнеры. Выполните из папки `totum-mit-docker`:
-
-```
-docker-compose stop
-```
-
-Открыть `totum_fpm.conf` в папке `nginx_fpm_conf`и отредактировать `pm-параметры`:
-
-```
-nano nginx_fpm_conf/totum_fpm.conf
-```
-
-В этом же файле изменяются параметры выделяемой для `totum`:
-
-— оперативной памяти — `php_admin_value[memory_limit]`
-
-— максимальный размер загружаемого файла — `php_admin_value[memory_limit]`
-
-> при изменении максимального размера фийла необходимо также изменить параметр `client_max_body_size` в файле настроек nginx `nginx_fpm_conf/totum_nginx.conf`
-
-Сохраняем и запускаем `docker-compose`:
-
-```
-docker-compose up -d
-```
-
-
 
 ### Подключаем DKIM (опционально)
 
@@ -307,7 +276,7 @@ docker-compose up -d
 
 Идем в управление `DNS` вашего домена и добавляем `TXT` запись:
 
-**Название** (замените `HOST` на тот хост с которого будут отправлятся письма )
+Название (замените `HOST` на тот хост с которого будут отправлятся письма )
 
 ```
 mail._domainkey.HOST.
@@ -320,3 +289,32 @@ v=DKIM1; k=rsa; t=s; p=PUBLIC_KEY
 ```
 
 
+### Настраиваем производительность сервера (опционально)
+
+Базово `FPM` в контейнере настроен на 2GB оперативной памяти.
+
+Что бы изменить надо остановить контейнеры. Выполните из папки `totum-mit-docker`:
+
+```
+docker-compose stop
+```
+
+Открыть `totum_fpm.conf` в папке `nginx_fpm_conf`и отредактировать `pm-параметры`:
+
+```
+nano nginx_fpm_conf/totum_fpm.conf
+```
+
+В этом же файле изменяются параметры выделяемой для `totum`:
+
+— оперативной памяти — `php_admin_value[memory_limit]`
+
+— максимальный размер загружаемого файла — `php_admin_value[upload_max_filesize]`
+
+> при изменении максимального размера фийла необходимо также изменить параметр `client_max_body_size` в файле настроек nginx `nginx_fpm_conf/totum_nginx.conf`
+
+Сохраняем и запускаем `docker-compose`:
+
+```
+docker-compose up -d
+```

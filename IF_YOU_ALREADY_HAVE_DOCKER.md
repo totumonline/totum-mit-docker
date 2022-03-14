@@ -221,37 +221,6 @@ cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DN
 
 
 
-### Configure server performance (optional)
-
-Basically `FPM` in the container is set to 2GB RAM.
-
-To change it, you have to stop the containers. Run from the `totum-mit-docker` folder:
-
-```
-docker-compose stop
-```
-
-Open `totum_fpm.conf` in the `nginx_fpm_conf` folder and edit the `pm-parameters`:
-
-```
-nano nginx_fpm_conf/totum_fpm.conf
-```
-
-In the same file the parameters of the allocated for `totum` are changed:
-
-— memory limit — `php_admin_value[memory_limit]`
-
-— maximum download size — `php_admin_value[memory_limit]`
-
-> If you change the maximum size of the fiill, you must also change the parameter `client_max_body_size` in the nginx configuration file `nginx_fpm_conf/totum_nginx.conf`
-
-Save and run `docker-compose`:
-
-```
-docker-compose up -d
-```
-
-
 
 ### Connect the DKIM (optional)
 
@@ -310,3 +279,32 @@ v=DKIM1; k=rsa; t=s; p=PUBLIC_KEY
 ```
 
 
+### Configure server performance (optional)
+
+Basically `FPM` in the container is set to 2GB RAM.
+
+To change it, you have to stop the containers. Run from the `totum-mit-docker` folder:
+
+```
+docker-compose stop
+```
+
+Open `totum_fpm.conf` in the `nginx_fpm_conf` folder and edit the `pm-parameters`:
+
+```
+nano nginx_fpm_conf/totum_fpm.conf
+```
+
+In the same file the parameters of the allocated for `totum` are changed:
+
+— memory limit — `php_admin_value[memory_limit]`
+
+— maximum download size — `php_admin_value[upload_max_filesize]`
+
+> If you change the maximum size of the fiill, you must also change the parameter `client_max_body_size` in the nginx configuration file `nginx_fpm_conf/totum_nginx.conf`
+
+Save and run `docker-compose`:
+
+```
+docker-compose up -d
+```
