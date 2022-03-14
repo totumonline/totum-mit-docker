@@ -6,7 +6,7 @@ If you have Docker, Docker-compose, and Git installed and want to give it a try,
 
 — clone the repository of the docker installation;
 
-— assign 777 to all folders and 666 to all files, since the container runs from user uid 201608:201608 
+— assign 777 to all folders and 666 to all files, since the container runs from user uid 201608:201608 and 201609:201609
 
 ```
 git clone https://github.com/totumonline/totum-mit-docker.git && cd totum-mit-docker && sudo find . -type d -exec chmod 777 {} \; && sudo find . -type f -exec chmod 666 {} \;
