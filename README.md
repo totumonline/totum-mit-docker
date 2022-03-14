@@ -1,5 +1,8 @@
 #### If you want this on RU — [README_RU](https://github.com/totumonline/totum-mit-docker/blob/main/README_RU.md)
 
+This Docker container is designed for users with minimal qualifications. We tried to pack everything you need to run Totum with as much security as possible. Because we wanted to take care of all possible usage scenarios for non-programmers, we didn't do any super-optimization inside this image. If this approach isn't for you and you're skilled in Docker, you can make your own image for your specific task.
+
+
 ### If you want a quick look
 
 If you have Docker, Docker-compose, and Git installed and want to give it a try, then:
