@@ -5,6 +5,8 @@ This Docker container is designed for users with minimal qualifications. We trie
 
 ### If you want a quick look
 
+**[Video on YouTube —>](https://www.youtube.com/watch?v=FELVA3GuvhQ)**
+
 If you have Docker, Docker-compose, and Git installed and want to give it a try, then:
 
 — clone the repository of the docker installation;

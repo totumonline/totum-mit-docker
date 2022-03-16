@@ -3,6 +3,8 @@
 
 ### Если вы хотите быстро посмотреть
 
+**[Видео на YouTube —>](https://www.youtube.com/watch?v=cIofOmhov_Q)**
+
 Если у вас установлены Docker, Docker-compose и Git  и вы хотите попробовать, то:
 
 — клонируете репозитарий docker-установки;
