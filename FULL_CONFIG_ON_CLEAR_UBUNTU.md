@@ -219,7 +219,7 @@ exit
 
 
 
-If you want to look at all domen in certificates:
+If you want to look at all domens in certificates:
 
 ```
 su root
