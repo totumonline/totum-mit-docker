@@ -219,7 +219,7 @@ exit
 
 
 
-Exit the container:
+If you want to look at all domen in certificates:
 
 ```
 su root
