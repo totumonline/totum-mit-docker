@@ -1,3 +1,5 @@
+**[Видео на YouTube —>](https://www.youtube.com/watch?v=6OalE9EJsHs)**
+
 ### Установим `docker` и `docker-compose` и необходимые пакеты:
 
 ```

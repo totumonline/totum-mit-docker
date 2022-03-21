@@ -43,6 +43,6 @@ Open the browser on localhost, select the installation language and fill in the 
 
 
 
-#### If you have a clear system and you want to make a full config — [look at this](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
+#### If you have a clear system and you want to make a full config — [look at this + video](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
 
 

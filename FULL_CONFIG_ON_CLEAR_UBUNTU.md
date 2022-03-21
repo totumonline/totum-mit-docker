@@ -1,3 +1,5 @@
+**[Video on YouTube —>](https://www.youtube.com/watch?v=qmVhoA3VLEI)**
+
 ### Install docker and docker-compose and the necessary packages:
 
 ```
