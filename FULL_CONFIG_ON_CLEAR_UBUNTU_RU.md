@@ -1,3 +1,5 @@
+## Установка на чистую Ubuntu 20.04 в ручном режиме (рассчитано на людей умеющих работать в консоли)
+
 **[Видео на YouTube —>](https://www.youtube.com/watch?v=6OalE9EJsHs)**
 
 ### Установим `docker` и `docker-compose` и необходимые пакеты:
@@ -23,15 +25,15 @@ useradd -s /bin/bash -m totum && groupadd -g 201608 totum_d && groupadd -g 20160
 Копируем файлы с `git`:
 
 ```
-cd ~ && git clone https://github.com/totumonline/totum-mit-docker.git && cd totum-mit-docker && sudo chown -R 201609:201609 . && sudo chmod 777 ./exim_log && sudo chown -R 201608:201608 ./totum
+cd ~ && git clone https://github.com/totumonline/totum-mit-docker.git && cd totum-mit-docker && sudo chown -R 201609:201609 . && sudo chmod 777 ./exim_log && sudo chown -R 201608:201608 ./totum && chmod 600 .env 
 ```
 
 
 
-Изменить часовой пояс (4 места) и пароль БД в `docker-compose.yml`:
+Изменить часовой пояс и пароль БД в `.env`:
 
 ```
-nano docker-compose.yml
+sudo nano .env
 ```
 
 А также в файле `totum_fpm.conf`:
@@ -39,6 +41,8 @@ nano docker-compose.yml
 ```
 nano nginx_fpm_conf/totum_fpm.conf
 ```
+
+Часовые пояса можно посмотреть выполнив `tzselect`
 
 
 
@@ -52,23 +56,39 @@ docker-compose up -d
 
 **Конфигурируем Totum:**
 
-— откройте url, который вы адресовали на этот сервер в браузере;
+- откройте url, который вы адресовали на этот сервер в браузере;
 
-— заполните:
+- заполните:
 
-— -- язык установки
+   - язык установки
 
-— -- пароль базы (если меняли)
+   - пароль базы (если меняли)
 
-— -- пароль суперпользователя totum, который будет создан при установке
+   - пароль суперпользователя totum, который будет создан при установке
 
-— -- email суперпользователя totum
+   - email суперпользователя totum
 
-— -- жмем Создать
+   - жмем Создать
 
 С этого момента можно использовать по `http`.
 
+#### Важно:
 
+Если вы еще не адресовали домен, то можно открыть в браузере по `IP` сервера и выполнить установку, но в этом случае после того как вы подключите домен вам нужно будет:
+
+- открыть `nano /home/totum/totum-mit-docker/totum/Conf.php` 
+
+    - найти и заменить IP на адрес домена `78.98.345.12` `>` `totum.monster`
+
+- если вы загружали файлы переименовать папку (замените `YOU_IP` и `YOU_DOMAIN`):
+
+```
+mv /home/totum/totum-mit-docker/totum/fls/YOU_IP  /home/totum/totum-mit-docker/totum/fls/YOU_DOMAIN
+
+# для примера
+
+mv /home/totum/totum-mit-docker/totum/fls/78.98.345.12  /home/totum/totum-mit-docker/totum/fls/totum.monster
+```
 
 ### Подключаем letsencrypt-ssl (опционально)
 
@@ -77,9 +97,9 @@ docker-compose up -d
 ```
 docker container ps
 
-# copy CONTAINER ID where IMAGE is ttmonline/totum-mit:***
 ```
 
+Скопируйте CONTAINER ID где IMAGE это ttmonline/totum-mit:***
 
 
 Переходим в контейнер (замените `CONTAINER_ID` на ваш `id` скопированный на предыдущем шаге):
@@ -89,14 +109,14 @@ docker exec -ti CONTAINER_ID /bin/bash
 ```
 
 
-
 Вызываем скрипт регистрирующий ваш `certbot` (замените `YOU_EMAIL` на ваш email):
 
 ```
 sudo certbot register --email YOU_EMAIL
 
-# it is need to answer A and N to next two questions
 ```
+
+Ответте на вопросы A и N.
 
 
 
@@ -170,10 +190,11 @@ nano ./nginx_fpm_conf/totum_nginx_SSL.conf
 Подключаем конфиг `nginx` для `ssl`, заменим в `docker-compose.yml`:
 
 ```
-nano docker-compose.yml
+sudo nano .env
 
-# change totum_nginx.conf on totum_nginx_SSL.conf in row 12
 ```
+
+Добавьте в конец строку `SSLON=_SSL` и сохраните.
 
 
 
@@ -261,21 +282,6 @@ sudo cat public.pem
 ```
 
 
-
-Перезапускаем `docker-compose`:
-
-```
-cd ..
-
-docker-compose stop
-
-docker-compose up -d
-```
-
-
-
-
-
 Идем в управление `DNS` вашего домена и добавляем `TXT` запись:
 
 Название (замените `HOST` на тот хост с которого будут отправлятся письма )
@@ -288,6 +294,12 @@ mail._domainkey.HOST.
 
 ```
 v=DKIM1; k=rsa; t=s; p=PUBLIC_KEY
+```
+
+Перезапускаем `docker-compose`:
+
+```
+cd .. && docker-compose stop && docker-compose up -d
 ```
 
 
