@@ -69,7 +69,6 @@ docker-compose up -d
 
 ```
 docker container ps
-
 ```
 
 Скопируйте CONTAINER ID где IMAGE это ttmonline/totum-mit:***
@@ -86,10 +85,9 @@ docker exec -ti CONTAINER_ID /bin/bash
 
 ```
 sudo certbot register --email YOU_EMAIL
-
 ```
 
-Ответте на вопросы A и N.
+Ответте на вопросы `A` и `N`.
 
 
 
