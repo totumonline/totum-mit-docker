@@ -1,11 +1,9 @@
 Этот Docker-контейнер рассчитан на пользователей с минимальной квалификацией. Мы постарались упаковать все необходимое для работы Totum с максимально возможным для этого уровнем безопасности. Тк мы стремились участь все возможные сценарии использования, возникающие у непрограммистов, то мы отказались от супер-оптимизации внутри этого образа. Если такой подход не для вас и у вас есть скилл в Docker, то вы можете сделать свой образ под вашу конкреную задачу.
 
 
-### Если вы хотите быстро посмотреть
+## Если вы хотите быстро посмотреть и у вас установлен Docker и Docker-compose
 
 **[Видео на YouTube —>](https://www.youtube.com/watch?v=cIofOmhov_Q)**
-
-Если у вас установлены Docker, Docker-compose и Git  и вы хотите попробовать, то:
 
 — клонируете репозитарий docker-установки;
 
@@ -14,7 +12,6 @@
 ```
 git clone https://github.com/totumonline/totum-mit-docker.git && cd totum-mit-docker && sudo find . -type d -exec chmod 777 {} \; && sudo find . -type f -exec chmod 666 {} \;
 ```
-
 
 
 Стартуете Docker-compose:
@@ -27,6 +24,8 @@ docker-compose up -d
 
 Открываем браузер на localhost, выбираем язык установки и заполняем в разделе Создать суперпользователя Тотум:
 
+> Если у вас занят 80 порт, то измените `docker-compose.yml` для подключения на другой порт.
+
 — пароль, который будет использован для суперпользователя Totum
 
 — ваш Email для Cron-нотификаций (никуда не отправляется, будет записан в конфиг)
@@ -37,8 +36,14 @@ docker-compose up -d
 
 
 
-#### Если у вас установлен Docker и вы хотите сконфигурировать полностью — [посмотрите эту инструкцию](https://github.com/totumonline/totum-mit-docker/blob/main/IF_YOU_ALREADY_HAVE_DOCKER_RU.md)
+#### Если вы посмотрели и хотите сконфигурировать полностью — [посмотрите эту инструкцию](https://github.com/totumonline/totum-mit-docker/blob/main/IF_YOU_ALREADY_HAVE_DOCKER_RU.md)
 
 
 
-#### Если вам нужно сконфигурировать чистую систему — [посмотрите эту инструкцию для ubuntu + видео](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU_RU.md)
+## Если вам нужно сконфигурировать чистую систему: 
+
+- В автоматическом режиме (рассчитано на минимальную квалификацию) — [посмотрите эту инструкцию для ubuntu + видео](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_AUTO_CONFIG_ON_CLEAR_UBUNTU_RU.md)
+
+- В ручном режиме с пояснениями — [посмотрите эту инструкцию для ubuntu + видео](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU_RU.md)
+
+- Если вам нужно сконфигурировать систему без Docker — [посмотрите эту инструкцию для ubuntu + видео](https://ru.docs.totum.online/ubuntu)
