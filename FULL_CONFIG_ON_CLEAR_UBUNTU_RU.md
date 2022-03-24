@@ -178,7 +178,7 @@ docker-compose stop
 
 
 
-Редактируем конфиг nginx (замените внутри `YOU_DOMAIN` на ваш домен в адресах сертификата в строках 9-11):
+Редактируем конфиг nginx (замените внутри `YOU_DOMAIN` на ваш домен в адресах сертификата в строках `9-11`):
 
 ```
 nano ./nginx_fpm_conf/totum_nginx_SSL.conf
@@ -186,13 +186,12 @@ nano ./nginx_fpm_conf/totum_nginx_SSL.conf
 
 
 
-Подключаем конфиг `nginx` для `ssl`, заменим в `docker-compose.yml`:
+Подключаем конфиг `nginx` для `ssl`, заменим в `.env`. Добавьте в конец строку `SSLON=_SSL` и сохраните:
 
 ```
 sudo nano .env
 ```
 
-Добавьте в конец строку `SSLON=_SSL` и сохраните.
 
 
 
