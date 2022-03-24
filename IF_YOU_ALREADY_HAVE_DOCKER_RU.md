@@ -178,16 +178,16 @@ docker-compose up -d
 
 ```
 docker container ps
-
-# copy CONTAINER ID where IMAGE is ttmonline/totum-mit:***
 ```
+
+Скопируйте `CONTAINER ID` где `IMAGE` это `ttmonline/totum-mit:***`
+
 
 Переходим в контейнер (замените `CONTAINER_ID` на ваш `id` скопированный на предыдущем шаге):
 
 ```
 docker exec -ti CONTAINER_ID /bin/bash
 ```
-
 
 
 Выполняем: 
@@ -207,13 +207,10 @@ exit
 ```
 
 
-
-Что бы посмотреть список всех доменов в сертификатах:
+Что бы посмотреть список всех доменов в сертификате:
 
 ```
-su root
-
-cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DNS:[^,]*' | cut -f2 -d:
+su root && cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DNS:[^,]*' | cut -f2 -d:
 ```
 
 
@@ -228,7 +225,6 @@ cd dkim
 ```
 
 
-
 Создаем новый сертификат взамен сертификата по умолчанию:
 
 ```
@@ -239,12 +235,11 @@ sudo openssl genrsa -out private.pem 1024 && sudo openssl rsa -pubout -in privat
 
 ```
 sudo cat public.pem
-
+```
+```
 -----BEGIN PUBLIC KEY-----
 !COPY TEXT ONLY FROM THIS LIKE MIGfMA0G....KwIDAQAB END DELETE LINE BREAKES!
 -----END PUBLIC KEY-----
-
-
 ```
 
 
