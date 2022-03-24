@@ -62,16 +62,6 @@ mv /home/totum/totum-mit-docker/totum/fls/78.98.345.12  /home/totum/totum-mit-do
 docker-compose up -d
 ```
 
-#### Важно:
-
-Если вы еще не адресовали домен, то можно открыть в браузере по `IP` сервера и выполнить установку, но в этом случае после того как вы подключите домен вам нужно будет:
-
-- открыть `nano /home/totum/totum-mit-docker/totum/Conf.php` 
-
-    - найти и заменить IP на адрес домена 
-
-- 
-
 
 ### Подключаем letsencrypt-ssl (опционально)
 
