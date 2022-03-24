@@ -85,7 +85,7 @@ docker-compose up -d
 mv /home/totum/totum-mit-docker/totum/fls/YOU_IP  /home/totum/totum-mit-docker/totum/fls/YOU_DOMAIN
 ```
 
-Для примера
+Для примера:
 
 ```
 mv /home/totum/totum-mit-docker/totum/fls/78.98.345.12  /home/totum/totum-mit-docker/totum/fls/totum.monster
@@ -115,7 +115,7 @@ docker exec -ti CONTAINER_ID /bin/bash
 sudo certbot register --email YOU_EMAIL
 ```
 
-Ответте на вопросы A и N.
+Ответте на вопросы `A` и `N`.
 
 
 
