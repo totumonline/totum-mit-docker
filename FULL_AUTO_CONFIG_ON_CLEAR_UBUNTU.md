@@ -1,6 +1,6 @@
 ## Installation on clean Ubuntu 20.04 in automatic mode ( for minimal skills)
 
-#### If you want a step-by-step explanation of the steps in these instructions, [see here](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU_RU.md)
+#### If you want a step-by-step explanation of the steps in these instructions, [see here](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
 
 
 Register a domain and direct it to the `ip` of your server. It is possible to install without using a domain opening by the server's `ip`. You can also use level 3 and level 4 domains.

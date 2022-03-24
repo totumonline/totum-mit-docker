@@ -38,14 +38,14 @@ Open the browser by `ip` or by `localhost` if it is a local machine, choose the 
 
 
 
-#### If you have looked and want to configure it completely — [see these instructions](https://github.com/totumonline/totum-mit-docker/blob/main/IF_YOU_ALREADY_HAVE_DOCKER_RU.md)
+#### If you have looked and want to configure it completely — [see these instructions](https://github.com/totumonline/totum-mit-docker/blob/main/IF_YOU_ALREADY_HAVE_DOCKER.md)
 
 
 
 ## If you need to configure a clean system: 
 
-- **In automatic mode (designed for minimal skills)** - [watch this instruction for ubuntu + video](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_AUTO_CONFIG_ON_CLEAR_UBUNTU_RU.md)
+- **In automatic mode (designed for minimal skills)** - [watch this instruction for ubuntu + video](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_AUTO_CONFIG_ON_CLEAR_UBUNTU.md)
 
-- In manual mode with explanations - [see this manual for ubuntu](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU_RU.md)
+- In manual mode with explanations - [see this manual for ubuntu](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
 
 - If you need to configure the system without Docker - [see this instruction for ubuntu + video](https://docs.totum.online/ubuntu)
