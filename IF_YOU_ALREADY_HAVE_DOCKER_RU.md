@@ -1,7 +1,6 @@
 ##  Если вы установили быстро посмотреть и теперь вам нужно переконфигурировать для использования
 
 
-
 Создаете группы `201608, totum_d` и `201609 totum_c`, назначаете эти группы своему пользователю системы, назначаем пользователя контейнера Тотум и права на клонированный каталог.
 
 Замените `YOU_USER` на вашего пользователя и выполните из каталога `totum-mit-docker`:
@@ -30,6 +29,30 @@ nano nginx_fpm_conf/totum_fpm.conf
 Часовые пояса можно посмотреть выполнив `tzselect`
 
 
+**Конфигурируем Totum:**
+
+Делегируйте домен.
+
+Откройте файл конфига Тотум и измените пароль базы и email для крон нотификаций (если указали случайный), а также найдите и замените `localhos` (или `ip`) на домен `>` `totum.monster`:
+
+```
+nano /home/totum/totum-mit-docker/totum/Conf.php
+```
+
+Если вы загружали файлы — переименуйте папку (замените `YOU_IP` и `YOU_DOMAIN`):
+
+```
+mv /home/totum/totum-mit-docker/totum/fls/YOU_IP  /home/totum/totum-mit-docker/totum/fls/YOU_DOMAIN
+```
+
+Для примера
+
+```
+mv /home/totum/totum-mit-docker/totum/fls/78.98.345.12  /home/totum/totum-mit-docker/totum/fls/totum.monster
+```
+
+Если устанавливали по `localhost` то вместо `ip` будет `localhost`.
+
 
 Запускаем:
 
@@ -37,43 +60,15 @@ nano nginx_fpm_conf/totum_fpm.conf
 docker-compose up -d
 ```
 
-
-
-**Конфигурируем Totum:**
-
-- откройте url, который вы адресовали на этот сервер в браузере;
-
-- заполните:
-
-   - язык установки
-
-   - пароль базы (если меняли)
-
-   - пароль суперпользователя totum, который будет создан при установке
-
-   - email суперпользователя totum
-
-   - жмем Создать
-
-С этого момента можно использовать по `http`.
-
 #### Важно:
 
 Если вы еще не адресовали домен, то можно открыть в браузере по `IP` сервера и выполнить установку, но в этом случае после того как вы подключите домен вам нужно будет:
 
 - открыть `nano /home/totum/totum-mit-docker/totum/Conf.php` 
 
-    - найти и заменить IP на адрес домена `78.98.345.12` `>` `totum.monster`
+    - найти и заменить IP на адрес домена 
 
-- если вы загружали файлы переименовать папку (замените `YOU_IP` и `YOU_DOMAIN`):
-
-```
-mv /home/totum/totum-mit-docker/totum/fls/YOU_IP  /home/totum/totum-mit-docker/totum/fls/YOU_DOMAIN
-
-# для примера
-
-mv /home/totum/totum-mit-docker/totum/fls/78.98.345.12  /home/totum/totum-mit-docker/totum/fls/totum.monster
-```
+- 
 
 
 ### Подключаем letsencrypt-ssl (опционально)

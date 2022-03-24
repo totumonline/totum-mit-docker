@@ -1,6 +1,5 @@
-## Установка на чистую Ubuntu 20.04 в ручном режиме (рассчитано на людей умеющих работать в консоли)
+## Установка c Docker на чистую Ubuntu 20.04 в ручном режиме (рассчитано на людей умеющих работать в консоли)
 
-**[Видео на YouTube —>](https://www.youtube.com/watch?v=6OalE9EJsHs)**
 
 ### Установим `docker` и `docker-compose` и необходимые пакеты:
 
@@ -96,10 +95,9 @@ mv /home/totum/totum-mit-docker/totum/fls/78.98.345.12  /home/totum/totum-mit-do
 
 ```
 docker container ps
-
 ```
 
-Скопируйте CONTAINER ID где IMAGE это ttmonline/totum-mit:***
+Скопируйте `CONTAINER ID` где `IMAGE` это `ttmonline/totum-mit:***`
 
 
 Переходим в контейнер (замените `CONTAINER_ID` на ваш `id` скопированный на предыдущем шаге):
@@ -113,7 +111,6 @@ docker exec -ti CONTAINER_ID /bin/bash
 
 ```
 sudo certbot register --email YOU_EMAIL
-
 ```
 
 Ответте на вопросы A и N.
@@ -191,7 +188,6 @@ nano ./nginx_fpm_conf/totum_nginx_SSL.conf
 
 ```
 sudo nano .env
-
 ```
 
 Добавьте в конец строку `SSLON=_SSL` и сохраните.
@@ -212,9 +208,10 @@ docker-compose up -d
 
 ```
 docker container ps
-
-# copy CONTAINER ID where IMAGE is ttmonline/totum-mit:***
 ```
+
+Скопируйте `CONTAINER ID` где `IMAGE` это `ttmonline/totum-mit:***`
+
 
 Переходим в контейнер (замените `CONTAINER_ID` на ваш `id` скопированный на предыдущем шаге):
 
@@ -242,12 +239,10 @@ exit
 
 
 
-Что бы посмотреть список всех доменов в сертификатах:
+Что бы посмотреть список всех доменов в сертификате:
 
 ```
-su root
-
-cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DNS:[^,]*' | cut -f2 -d:
+su root && cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DNS:[^,]*' | cut -f2 -d:
 ```
 
 
@@ -273,12 +268,11 @@ sudo openssl genrsa -out private.pem 1024 && sudo openssl rsa -pubout -in privat
 
 ```
 sudo cat public.pem
-
+```
+```
 -----BEGIN PUBLIC KEY-----
 !COPY TEXT ONLY FROM THIS LIKE MIGfMA0G....KwIDAQAB END DELETE LINE BREAKES!
 -----END PUBLIC KEY-----
-
-
 ```
 
 
