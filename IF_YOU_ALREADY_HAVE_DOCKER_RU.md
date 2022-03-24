@@ -282,9 +282,9 @@ nano nginx_fpm_conf/totum_fpm.conf
 
 В этом же файле изменяются параметры выделяемой для `totum`:
 
-— оперативной памяти — `php_admin_value[memory_limit]`
+- оперативной памяти — `php_admin_value[memory_limit]`
 
-— максимальный размер загружаемого файла — `php_admin_value[upload_max_filesize]`
+- максимальный размер загружаемого файла — `php_admin_value[upload_max_filesize]`
 
 > при изменении максимального размера фийла необходимо также изменить параметр `client_max_body_size` в файле настроек nginx `nginx_fpm_conf/totum_nginx.conf`
 
