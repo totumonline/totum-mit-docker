@@ -220,7 +220,6 @@ docker exec -ti CONTAINER_ID /bin/bash
 ```
 
 
-
 Выполняем: 
 
 ```
@@ -236,7 +235,6 @@ sudo certbot certonly --expand -d YOU_DOMAIN,SECOND_DOMAIN,THIRD_DOMAIN
 ```
 exit
 ```
-
 
 
 Что бы посмотреть список всех доменов в сертификате:
@@ -255,7 +253,6 @@ su root && cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | 
 ```
 cd dkim
 ```
-
 
 
 Создаем новый сертификат взамен сертификата по умолчанию:
