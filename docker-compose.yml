@@ -50,7 +50,7 @@ services:
     container_name: ttm-smtp
     image: ttmonline/ttm-smtp:1.0
     ports:
-        - "25:25"
+        - "2525:25"
     volumes:
       - ./dkim/config:/etc/exim4/_docker_additional_macros
       - ./dkim/domain.key:/etc/exim4/domain.key
