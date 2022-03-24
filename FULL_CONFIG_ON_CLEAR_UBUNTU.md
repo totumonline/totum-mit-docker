@@ -1,6 +1,7 @@
-**[Video on YouTube —>](https://www.youtube.com/watch?v=qmVhoA3VLEI)**
+## Installing with Docker on a clean Ubuntu 20.04 in manual mode (for people who know how to work in the console)
 
-### Install docker and docker-compose and the necessary packages:
+
+### Install `docker` and `docker-compose` and the necessary packages:
 
 ```
 apt update && apt -y install software-properties-common git nano htop && apt update && apt -y install ca-certificates curl gnupg lsb-release && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && apt-get update && apt-get -y install docker-ce docker-ce-cli containerd.io && curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
@@ -8,9 +9,9 @@ apt update && apt -y install software-properties-common git nano htop && apt upd
 
 
 
-### Create a user and go to it
+### Create a user and log in to it
 
-Add the user totum and add container workgroups and assign the user these groups, as well as sudo and docker (enter the password for this user, remember the password):
+Add the user `totum` and add the container workgroups and assign to the user those groups as well as `sudo` and `docker` (enter the password for this user, remember the password):
 
 ```
 useradd -s /bin/bash -m totum && groupadd -g 201608 totum_d && groupadd -g 201609 totum_c && usermod -aG 201608 totum  && usermod -aG 201609 totum && usermod -aG sudo totum && usermod -aG docker totum && passwd totum && su totum
@@ -18,20 +19,20 @@ useradd -s /bin/bash -m totum && groupadd -g 201608 totum_d && groupadd -g 20160
 
 
 
-### Install Totum
+### Totum installation
 
 Copy the files from `git`:
 
 ```
-cd ~ && git clone https://github.com/totumonline/totum-mit-docker.git && cd totum-mit-docker && sudo chown -R 201609:201609 . && sudo chmod 777 ./exim_log && sudo chown -R 201608:201608 ./totum
+cd ~ && git clone https://github.com/totumonline/totum-mit-docker.git && cd totum-mit-docker && sudo chown -R 201609:201609 . && sudo chmod 777 ./exim_log && sudo chown -R 201608:201608 ./totum && chmod 600 .env 
 ```
 
 
 
-Change the time zone (4 locations) and the database password in `docker-compose.yml`:
+Change the time zone and database password in `.env`:
 
 ```
-nano docker-compose.yml
+sudo nano .env
 ```
 
 And also in the file `totum_fpm.conf`:
@@ -39,6 +40,8 @@ And also in the file `totum_fpm.conf`:
 ```
 nano nginx_fpm_conf/totum_fpm.conf
 ```
+
+Time zones can be viewed by executing `tzselect`.
 
 
 
@@ -50,36 +53,53 @@ docker-compose up -d
 
 
 
-**Configure the Totum:**
+#### Configure Totum:
 
-— open the url you addressed to this server in your browser;
+- open the url you addressed to this server in your browser;
 
-— fill in:
+- fill in:
 
-— -- installation language
+   - installation language
 
-— -- database password (if changed)
+   - database password (if you changed it)
 
-— -- totum superuser password, which will be created during installation
+   - totum superuser password, which will be created during installation
 
-— -- totum superuser email
+   - totum superuser email
 
-— -- Click Create
+   - click Create;
 
-From now on you can use `http`.
+From now on you can use Totum by `http`.
 
+#### Important:
 
+If you have not yet addressed the domain, you can open totem in the browser by server `IP` and do the installation, but in this case, after you connect the domain you will need:
+
+- open `nano /home/totum/totum-mit-docker/totum/Conf.php` 
+
+    - find and replace the IP with the domain address `78.98.345.12` `>` `totum.monster`
+
+- if you downloaded files rename the folder (replace `YOU_IP` and `YOU_DOMAIN`):
+
+```
+mv /home/totum/totum-mit-docker/totum/fls/YOU_IP  /home/totum/totum-mit-docker/totum/fls/YOU_DOMAIN
+```
+
+For example:
+
+```
+mv /home/totum/totum-mit-docker/totum/fls/78.98.345.12  /home/totum/totum-mit-docker/totum/fls/totum.monster
+```
 
 ### Connect letsencrypt-ssl (optional)
 
-Find out the number of the totum container:
+Get the number of the totum container:
 
 ```
 docker container ps
-
-# copy CONTAINER ID where IMAGE is ttmonline/totum-mit:***
 ```
 
+Copy `CONTAINER ID` where `IMAGE` is `ttmonline/totum-mit:***`
 
 
 Go to the container (replace `CONTAINER_ID` with your `id` copied in the previous step):
@@ -89,18 +109,17 @@ docker exec -ti CONTAINER_ID /bin/bash
 ```
 
 
-
 Call the script that registers your `certbot` (replace `YOU_EMAIL` with your email):
 
 ```
 sudo certbot register --email YOU_EMAIL
-
-# it is need to answer A and N to next two questions
 ```
 
+Answer questions `A` and `N`.
 
 
-Check that the certificate is received in idle mode (replace `YOU_DOMAIN` with your domain):
+
+Test the certificate in test mode (replace `YOU_DOMAIN` with your domain):
 
 ```
 sudo certbot certonly --dry-run -d YOU_DOMAIN
@@ -141,7 +160,7 @@ If successful, you should see:
 
 
 
-Exit the container:
+Exiting the container:
 
 ```
 exit
@@ -149,7 +168,7 @@ exit
 
 
 
-#### Connect the certificate (if you have completed the previous section)
+### Connect the certificate (if you have completed the previous section)
 
 Stop docker-compose:
 
@@ -159,7 +178,7 @@ docker-compose stop
 
 
 
-Edit the nginx config (replace `YOU_DOMAIN` inside with your domain in the certificate addresses on lines 9-11):
+Edit the nginx config (replace `YOU_DOMAIN` inside with your domain in the certificate addresses in lines `9-11`):
 
 ```
 nano ./nginx_fpm_conf/totum_nginx_SSL.conf
@@ -167,13 +186,12 @@ nano ./nginx_fpm_conf/totum_nginx_SSL.conf
 
 
 
-Connect the `nginx` config for `ssl`, replace in `docker-compose.yml`:
+Connect config `nginx` for `ssl`, replace in `.env`. Add the line `SSLON=_SSL` to the end and save it:
 
 ```
-nano docker-compose.yml
-
-# change totum_nginx.conf on totum_nginx_SSL.conf in row 12
+sudo nano .env
 ```
+
 
 
 
@@ -191,9 +209,10 @@ Get the number of the totum container:
 
 ```
 docker container ps
-
-# copy CONTAINER ID where IMAGE is ttmonline/totum-mit:***
 ```
+
+Copy `CONTAINER ID` where `IMAGE` is `ttmonline/totum-mit:***`
+
 
 Go to the container (replace `CONTAINER_ID` with your `id` copied in the previous step):
 
@@ -202,42 +221,39 @@ docker exec -ti CONTAINER_ID /bin/bash
 ```
 
 
-
 Run: 
 
 ```
 sudo certbot certonly --expand -d YOU_DOMAIN,SECOND_DOMAIN,THIRD_DOMAIN
 ```
 
-All domains in the certificate must be listed, the first must be the primary domain for which the certificate was obtained first!
+All domains in the certificate must be listed, the first must be the primary domain for which the certificate was gotten first!
 
 
 
-Exit the container:
+Exiting the container:
 
 ```
 exit
 ```
 
 
-
-If you want to look at all domens in certificates:
+To see a list of all domains in the certificate:
 
 ```
-su root
-
-cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DNS:[^,]*' | cut -f2 -d:
+su root && cat ./certbot/etc_letsencrypt/live/*/cert.pem | openssl x509 -text | grep -o 'DNS:[^,]*' | cut -f2 -d:
 ```
 
 
-### Connect DKIM (optional)
 
-Go to the `dkim` directory:
+
+### Connecting the DKIM (optional)
+
+Go to the `dkim` folder:
 
 ```
 cd dkim
 ```
-
 
 
 Create a new certificate to replace the default one:
@@ -246,54 +262,52 @@ Create a new certificate to replace the default one:
 sudo openssl genrsa -out private.pem 1024 && sudo openssl rsa -pubout -in private.pem -out public.pem && sudo openssl pkey -in private.pem -out domain.key && sudo chmod 644 domain.key && sudo chown -R 201609:201609 domain.key
 ```
 
-See the public key of the certificate:
+Examine the public key of the certificate:
 
 ```
 sudo cat public.pem
-
+```
+```
 -----BEGIN PUBLIC KEY-----
 !COPY TEXT ONLY FROM THIS LIKE MIGfMA0G....KwIDAQAB END DELETE LINE BREAKES!
 -----END PUBLIC KEY-----
-
-
 ```
 
 
+Go to the `DNS` management of your domain and add a `TXT` record:
 
-Restart `docker-compose`:
-
-```
-cd ..
-
-docker-compose stop
-
-docker-compose up -d
-```
-
-
-
-
-
-Go to the `DNS` management of your domain and add a `TXT` entry:
-
-Title (replace `HOST` with the host from which the emails will be sent)
+Name (replace `HOST` with the host from which the mail will be sent)
 
 ```
 mail._domainkey.HOST.
 ```
 
-Содержимое (замените `PUBLIC_KEY` на текст скопированный из сертификата удалив переносы строк)
+Contents (replace `PUBLIC_KEY` with the text copied from the certificate, removing line breaks)
 
 ```
 v=DKIM1; k=rsa; t=s; p=PUBLIC_KEY
 ```
 
+And also add SPF by replacing `YOU_IP` with your `ip`:
+
+```
+v=spf1 ip4:YOU_SERVER_IP ~all
+```
+
+Restart `docker-compose`:
+
+```
+cd .. && docker-compose stop && docker-compose up -d
+```
+
+**Most hosts have port 25 for sending emails blocked by default to combat spam - check with your hoster's support to see what you need to do to get them to unblock your emails.**
+
 
 ### Configure server performance (optional)
 
-By default, the `FPM` in the container is set to 2GB RAM.
+Basically `FPM` in the container is set to 2GB RAM.
 
-To change it, you have to stop the containers. Run from the `totum-mit-docker` folder:
+To change that, you have to stop the containers. Execute from the `totum-mit-docker` folder:
 
 ```
 docker-compose stop
@@ -305,13 +319,13 @@ Open `totum_fpm.conf` in the `nginx_fpm_conf` folder and edit the `pm-parameters
 nano nginx_fpm_conf/totum_fpm.conf
 ```
 
-The same file contains changes to the parameters allocated to `totum`:
+The same file changes the parameters of the allocated for `totum`:
 
-— memory limit — `php_admin_value[memory_limit]`
+- RAM - `php_admin_value[memory_limit]`
 
-— maximum download size — `php_admin_value[upload_max_filesize]`
+- maximum size of the uploaded file - `php_admin_value[upload_max_filesize]`
 
-> If you change the maximum size of the fiill, you must also change the parameter `client_max_body_size` в файле настроек nginx `nginx_fpm_conf/totum_nginx.conf`
+> If you change the maximum file size, you must also change the `client_max_body_size` parameter in the nginx settings file `nginx_fpm_conf/totum_nginx.conf`
 
 Save and run `docker-compose`:
 
