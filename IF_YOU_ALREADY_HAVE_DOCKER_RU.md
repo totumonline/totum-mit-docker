@@ -33,7 +33,9 @@ nano nginx_fpm_conf/totum_fpm.conf
 
 Делегируйте домен.
 
-Откройте файл конфига Тотум и измените пароль базы и email для крон нотификаций (если указали случайный), а также найдите и замените `localhos` (или `ip`) на домен `>` `totum.monster`:
+Откройте файл конфига Тотум и измените пароль базы и email для крон нотификаций (если указали случайный), а также найдите и замените `localhos` (или `ip`) на домен.
+
+Например `70.145.23.56` `>` `totum.monster`:
 
 ```
 nano /home/totum/totum-mit-docker/totum/Conf.php
@@ -45,7 +47,7 @@ nano /home/totum/totum-mit-docker/totum/Conf.php
 mv /home/totum/totum-mit-docker/totum/fls/YOU_IP  /home/totum/totum-mit-docker/totum/fls/YOU_DOMAIN
 ```
 
-Для примера
+Для примера:
 
 ```
 mv /home/totum/totum-mit-docker/totum/fls/78.98.345.12  /home/totum/totum-mit-docker/totum/fls/totum.monster
