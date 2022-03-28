@@ -1,5 +1,20 @@
 #!/bin/bash
 
+
+
+if [[ $(ps aux | grep -i apt | wc -l) -ne 1 ]]
+then
+  echo
+  echo "THIS SERVER IS NOW INSTALLING SOMETHING, WAIT 5 MIN AND TRY AGAIN"
+  echo
+  exit 0
+else
+  echo
+  echo "Let's go..."
+  echo
+fi
+
+
 echo "                                             "
 echo "           ..       .*:-.                    "
 echo "          -*:-.     -+*:.   .*:-.            "
@@ -226,7 +241,7 @@ docker-compose up --force-recreate -d
 # Final text
 
 echo
-echo "NOW YOU CAN OPER YOU BROWSER AT  https://"$CERTBOTDOMAIN
+echo "NOW YOU CAN OPEN YOU BROWSER AT https://"$CERTBOTDOMAIN
 echo
 echo "LAUNCH DOCKER CONTAINERS ADDED TO CRONTAB AT SYSTEM STARTUP"
 echo
