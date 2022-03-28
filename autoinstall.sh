@@ -145,6 +145,33 @@ sed -i "s:Europe/London:${DOCKERTIMEZONE}:g" /home/totum/totum-mit-docker/.env /
 sed -i "s:TotumBasePass:${DOCKERBASEPASS}:g" /home/totum/totum-mit-docker/.env
 docker-compose up -d
 
+echo
+echo "Wait 10 sec..."
+sleep 1
+echo "Wait 9 sec..."
+sleep 1
+echo "Wait 8 sec..."
+sleep 1
+echo "Wait 7 sec..."
+sleep 1
+echo "Wait 6 sec..."
+sleep 1
+echo "Wait 5 sec..."
+sleep 1
+echo "Wait 4 sec..."
+sleep 1
+echo "Wait 3 sec..."
+sleep 1
+echo "Wait 2 sec..."
+sleep 1
+echo "Wait 1 sec..."
+sleep 1
+echo "Wait 0 sec..."
+sleep 1
+echo
+
+
+
 # Install Totum in Docker
 
 CONTAINERID=$(docker ps -f name=ttm-totum --quiet)
