@@ -2,7 +2,19 @@
 
 This Docker container is designed for users with minimal qualifications. We tried to pack everything you need to run Totum with as much security as possible. Because we wanted to take care of all possible usage scenarios for non-programmers, we didn't do any super-optimization inside this image. If this approach isn't for you and you're skilled in Docker, you can make your own image for your specific task.
 
+## If you want full install on clean Ubuntu 20 in auto-mode (design for zero skills):
 
+1. Deploy server;
+
+2. Delegate a valid domain to it;
+
+3. Open the terminal from root and execute:
+
+```
+curl -O https://raw.githubusercontent.com/totumonline/totum-mit-docker/main/autoinstall.sh && bash autoinstall.sh
+```
+
+4. Follow the on-screen prompts.
 
 
 ## If you want a quick look and you have Docker and Docker-compose installed
@@ -21,8 +33,6 @@ Start Docker-compose:
 ```
 docker-compose up -d
 ```
-
-
 
 Open the browser by `ip` or by `localhost` if it is a local machine, choose the installation language and fill in under Create a superuser Totum:
 
@@ -44,8 +54,8 @@ Open the browser by `ip` or by `localhost` if it is a local machine, choose the 
 
 ## If you need to configure a clean system: 
 
-- **In automatic mode (designed for minimal skills)** - [watch this instruction for ubuntu + video](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_AUTO_CONFIG_ON_CLEAR_UBUNTU.md)
+- Docker in semi-automatic mode - [watch this instruction for ubuntu](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_AUTO_CONFIG_ON_CLEAR_UBUNTU.md)
 
-- In manual mode with explanations - [see this manual for ubuntu](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
+- Docker in manual mode with explanations - [see this manual for ubuntu](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
 
-- If you need to configure the system without Docker - [see this instruction for ubuntu + video](https://docs.totum.online/ubuntu)
+- **If you need to configure the system without Docker - [see this instruction for ubuntu + video](https://docs.totum.online/ubuntu)**
