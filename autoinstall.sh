@@ -198,7 +198,20 @@ sed -i "s:-----END PUBLIC KEY-----::g" key_for_dkim.txt
 DKIMKEY=$(cat key_for_dkim.txt)
 echo -e "\nReplace YOU_DOMAIN and add TXT record for you domain:\n\nmail._domainkey.YOU_DOMAIN.\n\nv=DKIM1; k=rsa; t=s; p=PUBLIC_KEY\n\nReplace YOU_SERVER_IP and add TXT record for SPF:\n\nv=spf1 ip4:YOU_SERVER_IP ~all\n\nMost hosts have port 25 for sending emails blocked by default to combat spam - check with your hoster's support to see what you need to do to get them to unblock your emails.\n\n" > TXT_record_for_domain.txt
 sed -i "s:PUBLIC_KEY:${DKIMKEY}:g" TXT_record_for_domain.txt
+
+
+echo
+echo "- - - - - - - - - - - - - - - - - - - - - - -"
+echo "IMPORTANT!"
+
 cat TXT_record_for_domain.txt
+
+echo "- - - - - - - - - - - - - - - - - - - - - - -"
+
+# Add launch docker at startup
+
+echo -e "$(crontab -l)\n@reboot cd /home/totum/totum-mit-docker && docker-compose up -d" | crontab -u root -
+
 
 # Clear env
 
@@ -209,3 +222,11 @@ TOTUMADMINPASS=null
 
 cd /home/totum/totum-mit-docker/
 docker-compose up --force-recreate -d
+
+# Final text
+
+echo
+echo "NOW YOU CAN OPER YOU BROWSER AT  https://"$CERTBOTDOMAIN
+echo
+echo "LAUNCH DOCKER CONTAINERS ADDED TO CRONTAB AT SYSTEM STARTUP"
+echo
