@@ -55,7 +55,7 @@ fi
 
 DOCKERTIMEZONE=$(tzselect)
 
-read -p "Enter pass for database: " TOTUMBASEPASS
+read -p "Enter pass for database: " DOCKERBASEPASS
 
 read -p "Enter you email: " CERTBOTEMAIL
 
