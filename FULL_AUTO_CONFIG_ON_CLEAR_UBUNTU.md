@@ -1,4 +1,4 @@
-## Installation on clean Ubuntu 20.04 in automatic mode ( for minimal skills)
+## Installation on clean Ubuntu 20.04 in demi-automatic mode (for minimal skills)
 
 #### If you want a step-by-step explanation of the steps in these instructions, [see here](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
 
