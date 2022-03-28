@@ -222,10 +222,6 @@ cat TXT_record_for_domain.txt
 echo "- - - - - - - - - - - - - - - - - - - - - - -"
 echo
 
-# Add launch docker at startup
-
-echo -e "@reboot cd /home/totum/totum-mit-docker && docker-compose up -d" | crontab -u root -
-
 
 # Clear env
 
@@ -242,5 +238,5 @@ docker-compose up --force-recreate -d
 echo
 echo "NOW YOU CAN OPEN YOU BROWSER AT https://"$CERTBOTDOMAIN
 echo
-echo "LAUNCH DOCKER CONTAINERS ADDED TO CRONTAB AT SYSTEM STARTUP"
+echo "LAUNCH DOCKER CONTAINERS ADDED TO docker-compose.yml AT SYSTEM STARTUP"
 echo

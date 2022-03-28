@@ -30,7 +30,8 @@ services:
     depends_on:
       - postgres
       - exim
-
+    
+    restart: always
 
   postgres:
     container_name: ttm-postgres
@@ -44,6 +45,8 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
       TZ: ${TOTUMTIMEZONE}
       PGTZ: ${TOTUMTIMEZONE}
+    
+    restart: always
 
   exim:
     container_name: ttm-smtp
@@ -56,4 +59,6 @@ services:
     environment:
       DISABLE_IPV6: true
       TZ: ${TOTUMTIMEZONE}
+    
+    restart: always
   
