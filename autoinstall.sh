@@ -210,7 +210,7 @@ cat public.pem | tr -d '\n' > key_for_dkim.txt
 sed -i "s:-----BEGIN PUBLIC KEY-----::g" key_for_dkim.txt
 sed -i "s:-----END PUBLIC KEY-----::g" key_for_dkim.txt
 DKIMKEY=$(cat key_for_dkim.txt)
-echo -e "\nAdd TXT record for DKIM:\n\nmail._domainkey.${CERTBOTDOMAIN}.\n\nv=DKIM1; k=rsa; t=s; p=PUBLIC_KEY\n\nAdd TXT record for SPF:\n\nv=spf1 ip4:$(curl ifconfig.me/ip) ~all\n\nMost hoster's have port 25 for sending emails blocked by default to combat spam - check with your hoster's support to see what you need to do to get them to unblock your emails." > TXT_record_for_domain.txt
+echo -e "\nAdd TXT record for DKIM:\n\nmail._domainkey.${CERTBOTDOMAIN}\n\nv=DKIM1; k=rsa; t=s; p=PUBLIC_KEY\n\nAdd TXT record for SPF:\n\nv=spf1 ip4:$(curl ifconfig.me/ip) ~all\n\nMost hoster's have port 25 for sending emails blocked by default to combat spam - check with your hoster's support to see what you need to do to get them to unblock your emails." > TXT_record_for_domain.txt
 sed -i "s:PUBLIC_KEY:${DKIMKEY}:g" TXT_record_for_domain.txt
 
 echo
