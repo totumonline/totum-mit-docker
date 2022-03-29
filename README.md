@@ -4,6 +4,10 @@ This Docker container is designed for users with minimal qualifications. We trie
 
 ## If you want full install on clean Ubuntu 20 in auto-mode (designed for zero skills):
 
+**[Video on YouTube —>](https://www.youtube.com/watch?v=ZztzQ53kMQQ)**
+
+**[VULTR referal link —>](https://www.vultr.com/?ref=9084282)**
+
 1. Deploy server;
 
 2. Delegate a valid domain to it;
