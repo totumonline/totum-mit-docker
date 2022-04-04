@@ -203,17 +203,17 @@ sudo echo "SSLON=_SSL" >> /home/totum/totum-mit-docker/.env
 
 # Create DKIM
 
-sudo cd /home/totum/totum-mit-docker/dkim
+cd /home/totum/totum-mit-docker/dkim
 sudo openssl genrsa -out private.pem 1024
 sudo openssl rsa -pubout -in private.pem -out public.pem
 sudo openssl pkey -in private.pem -out domain.key
 sudo chmod 644 domain.key
 sudo chown -R 201609:201609 domain.key
-sudo cat public.pem | tr -d '\n' > key_for_dkim.txt
+sudo cat public.pem | sudo bash -c "tr -d '\n' > key_for_dkim.txt"
 sudo sed -i "s:-----BEGIN PUBLIC KEY-----::g" key_for_dkim.txt
 sudo sed -i "s:-----END PUBLIC KEY-----::g" key_for_dkim.txt
 DKIMKEY=$(sudo cat key_for_dkim.txt)
-sudo echo -e "\nAdd TXT record for DKIM:\n\nmail._domainkey.${CERTBOTDOMAIN}\n\nv=DKIM1; k=rsa; t=s; p=PUBLIC_KEY\n\nAdd TXT record for SPF:\n\nv=spf1 ip4:$(curl ifconfig.me/ip) ~all\n\nMost hoster's have port 25 for sending emails blocked by default to combat spam - check with your hoster's support to see what you need to do to get them to unblock your emails." > TXT_record_for_domain.txt
+sudo bash -c "echo -e '\nAdd TXT record for DKIM:\n\nmail._domainkey.${CERTBOTDOMAIN}\n\nv=DKIM1; k=rsa; t=s; p=PUBLIC_KEY\n\nAdd TXT record for SPF:\n\nv=spf1 ip4:$(curl ifconfig.me/ip) ~all\n\nMost hoster's have port 25 for sending emails blocked by default to combat spam - check with your hoster's support to see what you need to do to get them to unblock your emails.' > TXT_record_for_domain.txt"
 sudo sed -i "s:PUBLIC_KEY:${DKIMKEY}:g" TXT_record_for_domain.txt
 
 echo
@@ -225,11 +225,6 @@ sudo cat TXT_record_for_domain.txt
 echo "- - - - - - - - - - - - - - - - - - - - - - -"
 echo
 
-
-# Clear env
-
-DOCKERBASEPASS=null
-TOTUMADMINPASS=null
 
 # Start containers
 
