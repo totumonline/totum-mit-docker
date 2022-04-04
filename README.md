@@ -20,6 +20,8 @@ sudo curl -O https://raw.githubusercontent.com/totumonline/totum-mit-docker/main
 
 4. Follow the on-screen prompts.
 
+5. Open delegated domain and sign in as `admin` and the password you specified at installation.
+
 
 ## If you want a quick look and you have Docker and Docker-compose installed
 
