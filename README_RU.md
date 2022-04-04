@@ -9,7 +9,7 @@
 3. Откройте терминал под root и выполните:
 
 ```
-curl -O https://raw.githubusercontent.com/totumonline/totum-mit-docker/main/autoinstall.sh && bash autoinstall.sh
+sudo curl -O https://raw.githubusercontent.com/totumonline/totum-mit-docker/main/autoinstall.sh && sudo bash autoinstall.sh
 ```
 
 4. Следуйте подсказкам на экране.
