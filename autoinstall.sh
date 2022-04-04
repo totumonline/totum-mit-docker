@@ -199,7 +199,7 @@ sudo docker exec -i $CONTAINERID sudo certbot certonly -d $CERTBOTDOMAIN
 SSLDOMAIN=$(sudo find /home/totum/totum-mit-docker/certbot/etc_letsencrypt/live/* -type d)
 SSLDOMAIN=$(basename $SSLDOMAIN)
 sudo sed -i "s:YOU_DOMAIN:${SSLDOMAIN}:g" /home/totum/totum-mit-docker/nginx_fpm_conf/totum_nginx_SSL.conf
-sudo echo "SSLON=_SSL" >> /home/totum/totum-mit-docker/.env
+sudo bash -c "echo 'SSLON=_SSL' >> /home/totum/totum-mit-docker/.env"
 
 # Create DKIM
 
