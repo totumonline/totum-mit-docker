@@ -15,7 +15,7 @@ This Docker container is designed for users with minimal qualifications. We trie
 3. Open the terminal from root and execute:
 
 ```
-curl -O https://raw.githubusercontent.com/totumonline/totum-mit-docker/main/autoinstall.sh && bash autoinstall.sh
+sudo curl -O https://raw.githubusercontent.com/totumonline/totum-mit-docker/main/autoinstall.sh && sudo bash autoinstall.sh
 ```
 
 4. Follow the on-screen prompts.

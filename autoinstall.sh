@@ -189,14 +189,14 @@ echo
 
 # Install Totum in Docker
 
-sudo CONTAINERID=$(docker ps -f name=ttm-totum --quiet)
+CONTAINERID=$(sudo docker ps -f name=ttm-totum --quiet)
 sudo docker exec -i $CONTAINERID bin/totum install --pgdump=pg_dump --psql=psql -e -- $TOTUMLANG multi totum $CERTBOTEMAIL $CERTBOTDOMAIN admin $TOTUMADMINPASS totum ttm-postgres totum $DOCKERBASEPASS
 
 # Obtain SSL cert 
 
 sudo docker exec -i $CONTAINERID sudo certbot register --email $CERTBOTEMAIL --agree-tos --no-eff-email
 sudo docker exec -i $CONTAINERID sudo certbot certonly -d $CERTBOTDOMAIN
-sudo SSLDOMAIN=$(find /home/totum/totum-mit-docker/certbot/etc_letsencrypt/live/* -type d)
+SSLDOMAIN=$(sudo find /home/totum/totum-mit-docker/certbot/etc_letsencrypt/live/* -type d)
 SSLDOMAIN=$(basename $SSLDOMAIN)
 sudo sed -i "s:YOU_DOMAIN:${SSLDOMAIN}:g" /home/totum/totum-mit-docker/nginx_fpm_conf/totum_nginx_SSL.conf
 sudo echo "SSLON=_SSL" >> /home/totum/totum-mit-docker/.env
@@ -212,7 +212,7 @@ sudo chown -R 201609:201609 domain.key
 sudo cat public.pem | tr -d '\n' > key_for_dkim.txt
 sudo sed -i "s:-----BEGIN PUBLIC KEY-----::g" key_for_dkim.txt
 sudo sed -i "s:-----END PUBLIC KEY-----::g" key_for_dkim.txt
-sudo DKIMKEY=$(cat key_for_dkim.txt)
+DKIMKEY=$(sudo cat key_for_dkim.txt)
 sudo echo -e "\nAdd TXT record for DKIM:\n\nmail._domainkey.${CERTBOTDOMAIN}\n\nv=DKIM1; k=rsa; t=s; p=PUBLIC_KEY\n\nAdd TXT record for SPF:\n\nv=spf1 ip4:$(curl ifconfig.me/ip) ~all\n\nMost hoster's have port 25 for sending emails blocked by default to combat spam - check with your hoster's support to see what you need to do to get them to unblock your emails." > TXT_record_for_domain.txt
 sudo sed -i "s:PUBLIC_KEY:${DKIMKEY}:g" TXT_record_for_domain.txt
 
@@ -233,7 +233,7 @@ TOTUMADMINPASS=null
 
 # Start containers
 
-sudo cd /home/totum/totum-mit-docker/
+cd /home/totum/totum-mit-docker/
 sudo docker-compose up --force-recreate -d
 
 # Final text
