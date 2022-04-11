@@ -154,6 +154,8 @@ echo
 echo "Check domain..."
 echo
 
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
 CERTBOTANSWER=$(sudo certbot certonly --standalone --dry-run --register-unsafely-without-email --agree-tos -d $CERTBOTDOMAIN)
 
 if [[ $(echo $CERTBOTANSWER | grep -c 'The dry run was successful.') -eq 1 ]]
