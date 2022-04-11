@@ -16,7 +16,7 @@ fi
 if [[ $(sudo lsb_release -d | grep -c '20') -ne 1 ]]
 then
   echo
-  echo "THIS SERVER IS NOT A UBUNTU 20.04. CHECK: lsb_release -d"
+  echo "THIS SERVER IS NOT A UBUNTU 20. CHECK: lsb_release -d"
   echo
   exit 0
 else
@@ -53,7 +53,7 @@ echo "                -******::****:**:            "
 echo
 echo "- - - - - - - - - - - - - - - - - - - - - - -"
 echo
-echo "This install script will help you to install Totum online on clean Ubuntu 20.04 with SSL certificate and DKIM."
+echo "This install script will help you to install Totum online on clean Ubuntu 20 with SSL certificate and DKIM."
 echo
 echo "For sucsess you have to DELEGATE A VALID DOMAIN to this server."
 echo
