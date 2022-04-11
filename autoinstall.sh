@@ -9,7 +9,19 @@ then
   exit 0
 else
   echo
-  echo "Let's go..."
+  echo "APT is OK..."
+  echo
+fi
+
+if [[ $(sudo lsb_release -d | grep -c '20') -ne 1 ]]
+then
+  echo
+  echo "THIS SERVER IS NOT A UBUNTU 20.04. CHECK: lsb_release -d"
+  echo
+  exit 0
+else
+  echo
+  echo "Ubuntu version is OK. Let's go..."
   echo
 fi
 
@@ -131,6 +143,37 @@ echo
   exit 0
 fi
 
+if [[ $(sudo certbot --version 2>&1 | grep -c 'command not found') -eq 1 ]]
+then
+sudo apt -y install certbot
+else
+echo "Certbot are installed."
+fi
+
+echo
+echo "Check domain..."
+echo
+
+CERTBOTANSWER=$(sudo certbot certonly --standalone --dry-run --register-unsafely-without-email --agree-tos -d $CERTBOTDOMAIN)
+
+if [[ $(echo $CERTBOTANSWER | grep -c 'The dry run was successful.') -eq 1 ]]
+then
+echo
+echo "Domain is OK!"
+echo
+else
+echo
+echo "Certbot did't get certificate for you domain:"
+echo
+echo $CERTBOTDOMAIN
+echo
+echo "Check DNS for you domain and try again! If you setup NS or DNS less than 3 hours ago, maybe these changes have not reached the Let's encrypt servers. Wait one hour and try again"
+echo
+echo $CERTBOTANSWER
+echo
+  exit 0
+fi
+
 # Prepare
 
 sudo apt update
@@ -234,7 +277,7 @@ sudo docker-compose up --force-recreate -d
 # Final text
 
 echo
-echo "NOW YOU CAN OPEN YOU BROWSER AT https://"$CERTBOTDOMAIN
+echo "NOW YOU CAN OPEN YOU BROWSER AT https://"$CERTBOTDOMAIN "AND LOGIN AS admin AND" $TOTUMADMINPASS
 echo
 echo "LAUNCH DOCKER CONTAINERS ADDED TO docker-compose.yml AT SYSTEM STARTUP"
 echo
