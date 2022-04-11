@@ -62,7 +62,7 @@ echo
 echo "- - - - - - - - - - - - - - - - - - - - - - -"
 echo
 
-read -p "If you ready to go, type (A) or cancel (Cntrl + C) and check you domain with ping: " TOTUMRUN
+read -p "If you ready to go, type (A) or cancel (Ctrl + C) and check you domain with ping: " TOTUMRUN
 
 if [[ $TOTUMRUN = "A" ]]
 then
@@ -126,7 +126,7 @@ echo
 echo "- - - - - - - - - - - - - - - - - - - - - - -"
 echo
 
-read -p "If you ready to install with this params type (A) or cancel Cntrl + C: " TOTUMRUN2
+read -p "If you ready to install with this params type (A) or cancel Ctrl + C: " TOTUMRUN2
 
 if [[ $TOTUMRUN2 = "A" ]]
 then
