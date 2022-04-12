@@ -131,7 +131,7 @@ read -p "If you ready to install with this params type (A) or cancel Ctrl + C: "
 if [[ $TOTUMRUN2 = "A" ]]
 then
 echo
-echo "Star installation"
+echo "Start installation"
 echo
 elif [[ $TOTUMRUN2 = "a" ]]
 then
@@ -280,7 +280,7 @@ sudo docker-compose up --force-recreate -d
 # Final text
 
 echo
-echo -e "\033[32mNOW YOU CAN OPEN YOU BROWSER AT \033[0mhttps://"$CERTBOTDOMAIN "\033[32mAND LOGIN AS \033[0madmin \033[32mAND \033[0m"$TOTUMADMINPASS
-echo
 echo -e "\033[32mLAUNCH DOCKER CONTAINERS ADDED TO \033[0mdocker-compose.yml \033[32mAT SYSTEM STARTUP \033[0m"
+echo
+echo -e "\033[32mNOW YOU CAN OPEN YOU BROWSER AT \033[0mhttps://"$CERTBOTDOMAIN "\033[32mAND LOGIN AS \033[0madmin \033[32mAND \033[0m"$TOTUMADMINPASS
 echo
