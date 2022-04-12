@@ -262,12 +262,13 @@ sudo bash -c "echo -e '\nAdd TXT record for DKIM:\n\nmail._domainkey.${CERTBOTDO
 sudo sed -i "s:PUBLIC_KEY:${DKIMKEY}:g" TXT_record_for_domain.txt
 
 echo
-echo "- - - - - - - - - - - - - - - - - - - - - - -"
 echo -e "\033[41m --- IMPORTANT! --- \033[40m"
+echo
 
 sudo cat TXT_record_for_domain.txt
 
-echo "- - - - - - - - - - - - - - - - - - - - - - -"
+echo
+echo -e "\033[0m\033[41m ------ END! ------ \033[0m"
 echo
 
 
@@ -281,5 +282,5 @@ sudo docker-compose up --force-recreate -d
 echo
 echo -e "\033[32mNOW YOU CAN OPEN YOU BROWSER AT \033[0mhttps://"$CERTBOTDOMAIN "\033[32mAND LOGIN AS \033[0madmin \033[32mAND \033[0m"$TOTUMADMINPASS
 echo
-echo -e "\033[32mLAUNCH DOCKER CONTAINERS ADDED TO \033[0mdocker-compose.yml \033[32mAT SYSTEM STARTUP"
+echo -e "\033[32mLAUNCH DOCKER CONTAINERS ADDED TO \033[0mdocker-compose.yml \033[32mAT SYSTEM STARTUP \033[0m"
 echo
