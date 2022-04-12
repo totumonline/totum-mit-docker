@@ -26,36 +26,36 @@ else
 fi
 
 
-echo "                                             "
-echo "           ..       .*:-.                    "
-echo "          -*:-.     -+*:.   .*:-.            "
-echo "          -+*:-     -**:.   :+*-.            "
-echo "          .++*-.    -*:-.   :**-.      ..-.  "
-echo "           :+*:.    -**:.   **:-.     .:::-  "
-echo "           .*+**.   :**:.  .++:-     .***:   "
-echo "            ***:-.  ::::.  -:::-    .:-::.   "
-echo " ::--.      .*++::. :*::. -*::-.  .-*+**.    "
-echo " -+:--.      .+:::-:::---:**+:. .::::::.     "
-echo "  **:-.       *+***::*::*:-::::::-+**-       "
-echo "  -+*:--.    .*::-------::::::::**+-         "
-echo "   -++:--------:-----------------::          "
-echo "    .++*::-----------------------::          "
-echo "     .*++***:--------------------::          "
-echo "       -+++++*::::::::**::::---:**:          "
-echo "          -*+++++++++++*+++:::-:**.          "
-echo "            .*+++++++++***+++****:           "
-echo "               -++++++++***++++++.           "
-echo "                *++++++*++++++++:            "
-echo "                :++++++*++***+++-            "
-echo "                -+*++++++++***+*:            "
-echo "                -**+**+***+***+*:            "
-echo "                -******::****:**:            "
+echo -e "\033[33m                                             \033[0m"
+echo -e "\033[33m           ..       .*:-.                    \033[0m"
+echo -e "\033[33m          -*:-.     -+*:.   .*:-.            \033[0m"
+echo -e "\033[33m          -+*:-     -**:.   :+*-.            \033[0m"
+echo -e "\033[33m          .++*-.    -*:-.   :**-.      ..-.  \033[0m"
+echo -e "\033[33m           :+*:.    -**:.   **:-.     .:::-  \033[0m"
+echo -e "\033[33m           .*+**.   :**:.  .++:-     .***:   \033[0m"
+echo -e "\033[33m            ***:-.  ::::.  -:::-    .:-::.   \033[0m"
+echo -e "\033[33m ::--.      .*++::. :*::. -*::-.  .-*+**.    \033[0m"
+echo -e "\033[33m -+:--.      .+:::-:::---:**+:. .::::::.     \033[0m"
+echo -e "\033[33m  **:-.       *+***::*::*:-::::::-+**-       \033[0m"
+echo -e "\033[33m  -+*:--.    .*::-------::::::::**+-         \033[0m"
+echo -e "\033[33m   -++:--------:-----------------::          \033[0m"
+echo -e "\033[33m    .++*::-----------------------::          \033[0m"
+echo -e "\033[33m     .*++***:--------------------::          \033[0m"
+echo -e "\033[33m       -+++++*::::::::**::::---:**:          \033[0m"
+echo -e "\033[33m          -*+++++++++++*+++:::-:**.          \033[0m"
+echo -e "\033[33m            .*+++++++++***+++****:           \033[0m"
+echo -e "\033[33m               -++++++++***++++++.           \033[0m"
+echo -e "\033[33m                *++++++*++++++++:            \033[0m"
+echo -e "\033[33m                :++++++*++***+++-            \033[0m"
+echo -e "\033[33m                -+*++++++++***+*:            \033[0m"
+echo -e "\033[33m                -**+**+***+***+*:            \033[0m"
+echo -e "\033[33m                -******::****:**:            \033[0m"
 echo
 echo "- - - - - - - - - - - - - - - - - - - - - - -"
 echo
 echo "This install script will help you to install Totum online on clean Ubuntu 20 with SSL certificate and DKIM."
 echo
-echo "For sucsess you have to DELEGATE A VALID DOMAIN to this server."
+echo -e "For sucsess you have to \033[31mDELEGATE A VALID DOMAIN \033[0mto this server."
 echo
 echo "If you not shure about you domain — cansel this install and check: ping YOU_DOMAIN"
 echo
@@ -263,7 +263,7 @@ sudo sed -i "s:PUBLIC_KEY:${DKIMKEY}:g" TXT_record_for_domain.txt
 
 echo
 echo "- - - - - - - - - - - - - - - - - - - - - - -"
-echo "IMPORTANT!"
+echo -e "\033[41m --- IMPORTANT! --- \033[40m"
 
 sudo cat TXT_record_for_domain.txt
 
@@ -279,7 +279,7 @@ sudo docker-compose up --force-recreate -d
 # Final text
 
 echo
-echo "NOW YOU CAN OPEN YOU BROWSER AT https://"$CERTBOTDOMAIN "AND LOGIN AS admin AND" $TOTUMADMINPASS
+echo -e "\033[32mNOW YOU CAN OPEN YOU BROWSER AT \033[0mhttps://"$CERTBOTDOMAIN "\033[32mAND LOGIN AS \033[0madmin \033[32mAND \033[0m"$TOTUMADMINPASS
 echo
-echo "LAUNCH DOCKER CONTAINERS ADDED TO docker-compose.yml AT SYSTEM STARTUP"
+echo -e "\033[32mLAUNCH DOCKER CONTAINERS ADDED TO \033[0mdocker-compose.yml \033[32mAT SYSTEM STARTUP"
 echo
