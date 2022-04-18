@@ -58,9 +58,7 @@ Open the browser by `ip` or by `localhost` if it is a local machine, choose the 
 
 
 
-## If you need to configure a clean system: 
-
-- Docker in semi-automatic mode - [watch this instruction for ubuntu](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_AUTO_CONFIG_ON_CLEAR_UBUNTU.md)
+## If you need to configure a clean system in manual mode or without Docker: 
 
 - Docker in manual mode with explanations - [see this manual for ubuntu](https://github.com/totumonline/totum-mit-docker/blob/main/FULL_CONFIG_ON_CLEAR_UBUNTU.md)
 
