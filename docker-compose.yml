@@ -4,7 +4,7 @@ services:
 
   totum:
     container_name: ttm-totum
-    image: ttmonline/totum-mit:2.3.38
+    image: totumonline/totum-mit:2.3.38
     ports:
       - "80:80"
       - "443:443"
@@ -50,7 +50,7 @@ services:
 
   exim:
     container_name: ttm-smtp
-    image: ttmonline/ttm-smtp:1.0
+    image: totumonline/ttm-smtp:1.0
     volumes:
       - ./dkim/config:/etc/exim4/_docker_additional_macros
       - ./dkim/domain.key:/etc/exim4/domain.key
