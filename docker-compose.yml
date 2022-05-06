@@ -4,7 +4,7 @@ services:
 
   totum:
     container_name: ttm-totum
-    image: totumonline/totum-mit:2.3.38
+    image: totumonline/totum-mit:2.4.40
     ports:
       - "80:80"
       - "443:443"
