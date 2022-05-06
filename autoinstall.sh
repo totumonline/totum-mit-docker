@@ -13,10 +13,10 @@ else
   echo
 fi
 
-if [[ $(sudo lsb_release -d | grep -c '20') -ne 1 ]]
+if [[ $(sudo cat /etc/issue | grep -c 'Ubuntu 20') -ne 1 ]]
 then
   echo
-  echo "THIS SERVER IS NOT A UBUNTU 20. CHECK: lsb_release -d"
+  echo "THIS SERVER IS NOT A UBUNTU 20. CHECK: sudo cat /etc/issue"
   echo
   exit 0
 else
