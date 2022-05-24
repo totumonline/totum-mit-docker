@@ -4,7 +4,18 @@ services:
 
   totum:
     container_name: ttm-totum
+
+    # ----------------------------------------------------------------------------------
+    # !IMPORTANT! — READ https://github.com/totumonline/totum-mit/blob/master/UPDATES.md
+    # WHEN YOU CHANGE A MAGOR VERSION OF TOTUM, FOR EXAMPLE FROM ***:2.*.* TO ***:3.*.*
+    # THE DATA IN YOUR PROJECT MAY BE CORRUPTED IF YOU UPDATE WITHOUT PREPARATION!
+    # AVAILABLE VERSIONS HERE: https://hub.docker.com/r/totumonline/totum-mit/tags
+    # NEVER USE TAG :latest!
+
     image: totumonline/totum-mit:2.4.42
+
+    # ----------------------------------------------------------------------------------
+
     ports:
       - "80:80"
       - "443:443"
