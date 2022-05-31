@@ -59,7 +59,7 @@ echo -e "\e[43;1;30m   This install script will help you to install Totum online
 echo -e "\e[43;1;30m                                                                         \033[0m"
 echo -e "\e[43;1;30m   on clean Ubuntu 20 with SSL certificate and DKIM.                     \033[0m"
 echo -e "\e[43;1;30m                                                                         \033[0m"
-echo -e "\e[43;1;30m   For sucsess you have to \e[43;1;37mDELEGATE A VALID DOMAIN \033[0m\e[43;1;30mto this server.       \033[0m"
+echo -e "\e[43;1;30m   For sucсess you have to \e[43;1;37mDELEGATE A VALID DOMAIN \033[0m\e[43;1;30mto this server.       \033[0m"
 echo -e "\e[43;1;30m                                                                         \033[0m"
 echo -e "\e[43;1;30m   If you not shure about you domain — cansel this install and check:    \033[0m"
 echo -e "\e[43;1;30m                                                                         \033[0m"
@@ -87,9 +87,9 @@ fi
 
 DOCKERTIMEZONE=$(tzselect)
 
-read -p "Enter pass for database: " DOCKERBASEPASS
+read -p "Enter database password for : " DOCKERBASEPASS
 
-read -p "Enter you email: " CERTBOTEMAIL
+read -p "Enter your email: " CERTBOTEMAIL
 
 read -p "Enter Totum superuser pass: " TOTUMADMINPASS
 
@@ -119,15 +119,15 @@ fi
 echo
 echo "- - - - - - - - - - - - - - - - - - - - - -"
 echo
-echo -e "\033[1mCheck you settings:\033[0m"
+echo -e "\033[1mCheck your settings:\033[0m"
 echo
 echo -e "\033[1mTimezone:\033[0m " $DOCKERTIMEZONE
 echo
-echo -e "\033[1mPass for database:\033[0m "$DOCKERBASEPASS
+echo -e "\033[1mPassword for database:\033[0m "$DOCKERBASEPASS
 echo
 echo -e "\033[1mEmail:\033[0m " $CERTBOTEMAIL
 echo
-echo -e "\033[1mPass for Totum admin:\033[0m " $TOTUMADMINPASS
+echo -e "\033[1mPassword for Totum admin:\033[0m " $TOTUMADMINPASS
 echo
 echo -e "\033[1mDomain:\033[0m " $CERTBOTDOMAIN
 echo
