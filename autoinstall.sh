@@ -61,7 +61,7 @@ echo -e "\e[43;1;30m   on clean Ubuntu 20 with SSL certificate and DKIM.        
 echo -e "\e[43;1;30m                                                                         \033[0m"
 echo -e "\e[43;1;30m   For sucsess you have to \e[43;1;37mDELEGATE A VALID DOMAIN \033[0m\e[43;1;30mto this server.       \033[0m"
 echo -e "\e[43;1;30m                                                                         \033[0m"
-echo -e "\e[43;1;30m   If you not shure about you domain — cansel this install and check:    \033[0m"
+echo -e "\e[43;1;30m   If you not shure about you domain — cancel this install and check:    \033[0m"
 echo -e "\e[43;1;30m                                                                         \033[0m"
 echo -e "\e[43;1;37m   ping YOU_DOMAIN                                                       \033[0m"
 echo -e "\e[43;1;30m                                                                         \033[0m"
