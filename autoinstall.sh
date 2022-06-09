@@ -59,7 +59,7 @@ echo -e "\e[43;1;35m   This install script will help you to install Totum online
 echo -e "\e[43;1;35m                                                                         \033[0m"
 echo -e "\e[43;1;35m   on clean Ubuntu 20 with SSL certificate and DKIM.                     \033[0m"
 echo -e "\e[43;1;35m                                                                         \033[0m"
-echo -e "\e[43;1;35m   For sucsess you have to \e[43;1;31mDELEGATE A VALID DOMAIN \033[0m\e[43;1;35mto this server.       \033[0m"
+echo -e "\e[43;1;35m   For success you have to \e[43;1;31mDELEGATE A VALID DOMAIN \033[0m\e[43;1;35mto this server.       \033[0m"
 echo -e "\e[43;1;35m                                                                         \033[0m"
 echo -e "\e[43;1;35m   If you not shure about you domain — cansel this install and check:    \033[0m"
 echo -e "\e[43;1;35m                                                                         \033[0m"
@@ -87,11 +87,11 @@ fi
 
 DOCKERTIMEZONE=$(tzselect)
 
-read -p "Create pass for database: " DOCKERBASEPASS
+read -p "Create password for database: " DOCKERBASEPASS
 
 read -p "Enter you email: " CERTBOTEMAIL
 
-read -p "Create Totum superuser pass: " TOTUMADMINPASS
+read -p "Create Totum superuser password: " TOTUMADMINPASS
 
 read -p "Enter domain without http/https delegated! to this server like totum.online: " CERTBOTDOMAIN
 
