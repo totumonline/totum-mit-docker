@@ -87,11 +87,11 @@ fi
 
 DOCKERTIMEZONE=$(tzselect)
 
-read -p "Enter pass for database: " DOCKERBASEPASS
+read -p "Create pass for database: " DOCKERBASEPASS
 
 read -p "Enter you email: " CERTBOTEMAIL
 
-read -p "Enter Totum superuser pass: " TOTUMADMINPASS
+read -p "Create Totum superuser pass: " TOTUMADMINPASS
 
 read -p "Enter domain without http/https delegated! to this server like totum.online: " CERTBOTDOMAIN
 
