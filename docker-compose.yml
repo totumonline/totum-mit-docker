@@ -68,7 +68,7 @@ services:
       - ./exim_log:/var/log/exim4
 
     environment:
-      DISABLE_IPV6: true
+      DISABLE_IPV6: "true"
       TZ: ${TOTUMTIMEZONE}
     
     restart: always
