@@ -12,7 +12,7 @@ services:
     # AVAILABLE VERSIONS HERE: https://hub.docker.com/r/totumonline/totum-mit/tags
     # NEVER USE TAG :latest!
 
-    image: totumonline/totum-mit:3.7.48
+    image: totumonline/totum-mit:4.8.50
 
     # ----------------------------------------------------------------------------------
 
