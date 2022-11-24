@@ -208,7 +208,7 @@ sudo usermod -aG docker totum
 sudo git clone https://github.com/totumonline/totum-mit-docker.git /home/totum/totum-mit-docker
 sudo chown totum:totum /home/totum/totum-mit-docker
 cd /home/totum/totum-mit-docker
-sudo openssl rand -base64 64 > /home/totum/totum-mit-docker/Crypto.key
+sudo openssl rand -base64 64 > /home/totum/totum-mit-docker/totum/Crypto.key
 sudo chown -R 201609:201609 .
 sudo chmod 777 ./exim_log
 sudo chown -R 201608:201608 ./totum
