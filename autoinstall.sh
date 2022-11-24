@@ -65,6 +65,7 @@ echo -e "\033[43m\033[30m   If you not shure about you domain — cansel this in
 echo -e "\033[43m\033[30m                                                                         \033[0m"
 echo -e "\033[43m\033[31m   ping YOU_DOMAIN                                                       \033[0m"
 echo -e "\033[43m\033[30m                                                                         \033[0m"
+echo -e "\033[41m\033[37m                                                                         \033[0m"
 echo -e "\033[41m\033[37m   Be shure, you can’t switch this install to PRO.                       \033[0m"
 echo -e "\033[41m\033[37m                                                                         \033[0m"
 echo -e "\033[41m\033[37m   Use «native install» instead of this script.                          \033[0m"
