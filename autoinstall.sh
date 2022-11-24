@@ -65,7 +65,11 @@ echo -e "\033[43m\033[30m   If you not shure about you domain — cansel this in
 echo -e "\033[43m\033[30m                                                                         \033[0m"
 echo -e "\033[43m\033[31m   ping YOU_DOMAIN                                                       \033[0m"
 echo -e "\033[43m\033[30m                                                                         \033[0m"
-echo -e "\033[43m\033[30m- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\033[0m"
+echo -e "\033[41m\033[37m   Be shure, you can’t switch this install to PRO.                       \033[0m"
+echo -e "\033[41m\033[37m                                                                         \033[0m"
+echo -e "\033[41m\033[37m   Use «native install» instead of this script.                          \033[0m"
+echo -e "\033[41m\033[37m                                                                         \033[0m"
+echo -e "\033[41m\033[37m- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\033[0m"
 echo
 
 read -p "If you ready to go, type (A) or cancel (Ctrl + C) and check you domain with ping: " TOTUMRUN
@@ -203,6 +207,7 @@ sudo usermod -aG docker totum
 sudo git clone https://github.com/totumonline/totum-mit-docker.git /home/totum/totum-mit-docker
 sudo chown totum:totum /home/totum/totum-mit-docker
 cd /home/totum/totum-mit-docker
+sudo openssl rand -base64 64 > /home/totum/totum-mit-docker/Crypto.key
 sudo chown -R 201609:201609 .
 sudo chmod 777 ./exim_log
 sudo chown -R 201608:201608 ./totum

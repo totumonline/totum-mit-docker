@@ -26,6 +26,7 @@ services:
       - ./cron/totum_cron:/var/www/cron/totum_cron
 
       - ./totum/Conf.php:/var/www/totum-mit/Conf.php
+      - ./totum/Crypto.key:/var/www/totum-mit/Crypto.key
       - ./totum/fls:/var/www/totum-mit/http/fls
       - ./totum/totumTmpfiles:/var/www/totum-mit/totumTmpfiles
       - ./totum/myLogs:/var/www/totum-mit/myLogs
